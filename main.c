@@ -17,9 +17,10 @@
 int main(void)
 {
 
-    Liste maListe ;
+    liste maListe ;
+    int valeur = 5 ;
 
-    initialiser();
+    initialiser(&maListe , valeur);
 
     return  0;
 }

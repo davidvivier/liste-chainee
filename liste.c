@@ -47,13 +47,13 @@ liste* ajoute_position(liste *l, int entier, unsigned int position) {
 	//  faisant attention à la fin de la liste
 	int i = 0;
 	while (i < position && courant->suivant != NULL) {
-		courant = courant->suivant
+		courant = courant->suivant;
 		i++;
 	}
 
 	if (i < position) {
 		// on est arrivé à la fin de la liste avant la position voulue
-		printf("MOTHERFUCKER you tried to put it at the %d position but this fucking list only has %d elements. But even so, i have put it at the end of the list. But please be careful the next time.\n", );
+		printf("MOTHERFUCKER you tried to put it at the %d position but this fucking list only has %d elements. But even so, i have put it at the end of the list. But please be careful the next time.\n" ,position );
 	}
 
 	// on crée le nouveau maillon
@@ -97,7 +97,7 @@ liste* remplir(liste *l, int tab[], unsigned int nb) {
 
 int rechercher(liste* l , int entier) {
     int i = 0 ;
-    Liste* courant = l ;// pointeur pour parcourir la liste
+    liste* courant = l ;// pointeur pour parcourir la liste
     while (courant->valeur != entier && courant != NULL) // tant que la valeur n'as pas été trouvée et que la fin de liste n'est pas atteinte
     {
         i++ ; // on incrémente le rang
@@ -113,7 +113,7 @@ int rechercher(liste* l , int entier) {
 
 void vider(liste* l){
 
-    Liste* tmpSuppr = l ;
+    liste* tmpSuppr = l ;
 
     while(l!=NULL)
     {
