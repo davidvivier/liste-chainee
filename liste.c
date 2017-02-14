@@ -46,24 +46,31 @@ liste* ajoute_debut(liste *l, int entier) {
 	liste* new = malloc(sizeof(liste));
 	new->valeur = entier;
 
-	// on le place au début et on fait le chaînage
+	// on le place au début en faisant le chaînage
 	new->suivant = l;
+
+	// le nouveau maillon est maintenant le premier élément de la liste
 	return new;
 }
 
 liste* ajoute_position(liste *l, int entier, unsigned int position) {
 
+	// cas particulier
+	if (position == 1) {
+		return ajoute_debut(l, entier); 
+	}
+
 	liste* courant = l;
 
 	// on parcourt la liste, jusqu'à l'endroit voulu, tout en 
 	//  faisant attention à la fin de la liste
-	unsigned int i = 0;
-	while (i < position && courant->suivant != NULL) {
+	unsigned int i = 1;
+	while (i < position-1 && courant->suivant != NULL) {
 		courant = courant->suivant;
 		i++;
 	}
 
-	if (i < position) {
+	if (i < position-1) {
 		// on est arrivé à la fin de la liste avant la position voulue
 		printf("MOTHERFUCKER you tried to put it at the %d position but this fucking list only has %d elements. But even so, i have put it at the end of the list. But please be careful the next time.\n" ,position, i);
 	}
@@ -108,7 +115,7 @@ liste* remplir(liste *l, int tab[], unsigned int nb) {
 
 
 int rechercher(liste* l , int entier) {
-    int i = 0 ;
+    int i = 1;
     liste* courant = l ;// pointeur pour parcourir la liste
     while (courant->valeur != entier && courant != NULL) // tant que la valeur n'as pas été trouvée et que la fin de liste n'est pas atteinte
     {
@@ -116,22 +123,55 @@ int rechercher(liste* l , int entier) {
         courant = courant->suivant ; // on avance de 1 élément
     }
 
-    if(courant == NULL) // si la valeur n'a pas été trouvée on renvoit -1
+    if(courant == NULL) // si la valeur n'a pas été trouvée on renvoie -1
     {
+    	printf("La liste ne contient pas l'élément %d\n", entier);
         return -1 ;
     }
     return i  ;
+}
+
+liste* supprimer(liste *l, int entier) {
+	int i = 1;
+
+	// pointeur pour parcourir la liste
+    liste* courant = l ;
+    liste* precedent = NULL;
+    
+    while (courant->valeur != entier && courant != NULL) // tant que la valeur n'as pas été trouvée et que la fin de liste n'est pas atteinte
+    {
+        i++; // on incrémente le rang
+        precedent = courant; // on retient l'élément précédent
+        courant = courant->suivant; // on avance de 1 élément
+    }
+
+    if(courant == NULL) // si la valeur n'a pas été trouvée on renvoie -1
+    {
+    	printf("La liste ne contient pas l'élément %d\n", entier);
+        return l;
+    }
+
+    if (i == 1) {
+    	// cas particulier : c'est le premier élément
+    	l = l->suivant;
+    } else {
+    	precedent->suivant = courant->suivant;
+    }
+    
+    free(courant);
+
+    return l;
 }
 
 void vider(liste* l){
 
     liste* tmpSuppr = l ;
 
-    while(l!=NULL)
+    while(l != NULL)
     {
         tmpSuppr = l ; //l'élément qui va être supprimé
         l = l->suivant ; //on avance le pointeur pour sortir le premier élément de la liste
-
+        
         free(tmpSuppr); // on libère la mémoire de l'élément à supprimer
     }
 
