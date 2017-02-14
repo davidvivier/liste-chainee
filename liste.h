@@ -27,6 +27,8 @@ liste* remplir(liste *l, int tab[], unsigned int nb);
 
 int rechercher(liste* l , int entier);
 
+liste* supprimer(liste *l, int entier);
+
 void vider(liste* l);
 
 
