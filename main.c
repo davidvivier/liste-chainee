@@ -17,6 +17,9 @@
 int main(void)
 {
 
+    Liste maListe ;
+
+    initialiser();
 
     return  0;
 }

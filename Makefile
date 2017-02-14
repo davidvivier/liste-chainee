@@ -1,11 +1,10 @@
+CFLAGS= -Wall -Wextra -g
+
 ListeChaine: main.o liste.o
-	gcc -o listeChaine main.o liste.o
 
-main.o : main.c
-	gcc -c -Wall main.c
+main.o: liste.h main.c
 
-liste.o : liste.c
-	gcc -c -Wall liste.c
+liste.o: liste.c liste.h
 
 clean:
 	rm -rf *.o

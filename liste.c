@@ -93,3 +93,39 @@ liste* remplir(liste *l, int tab[], unsigned int nb) {
 
 	return l;
 }
+
+
+int rechercher(liste* l , int entier) {
+    int i = 0 ;
+    Liste* courant = l ;// pointeur pour parcourir la liste
+    while (courant->valeur != entier && courant != NULL) // tant que la valeur n'as pas été trouvée et que la fin de liste n'est pas atteinte
+    {
+        i++ ; // on incrémente le rang
+        courant = courant->suivant ; // on avance de 1 élément
+    }
+
+    if(courant == NULL) // si la valeur n'a pas été trouvée on renvoit -1
+    {
+        return -1 ;
+    }
+    return i  ;
+}
+
+void vider(liste* l){
+
+    Liste* tmpSuppr = l ;
+
+    while(l!=NULL)
+    {
+        tmpSuppr = l ; //l'élément qui va être supprimé
+        l = l->suivant ; //on avance le pointeur pour sortir le premier élément de la liste
+
+        free(tmpSuppr); // on libère la mémoire de l'élément à supprimer
+    }
+
+}
+
+void initialiser(liste* l , int entier){
+    l->valeur = entier; //remplir le premier élément de la liste
+    l->suivant = NULL ; // le premier élément à pour suivant NULL
+}
