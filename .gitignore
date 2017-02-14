@@ -1,2 +1,4 @@
 listeChaine
 *.o
+*.iml
+*.xml
