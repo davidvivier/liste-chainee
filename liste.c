@@ -45,7 +45,7 @@ liste* ajoute_position(liste *l, int entier, unsigned int position) {
 
 	// on parcourt la liste, jusqu'à l'endroit voulu, tout en 
 	//  faisant attention à la fin de la liste
-	int i = 0;
+	unsigned int i = 0;
 	while (i < position && courant->suivant != NULL) {
 		courant = courant->suivant;
 		i++;

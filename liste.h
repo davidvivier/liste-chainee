@@ -13,6 +13,8 @@ struct _liste {
 	liste *suivant;
 };
 
+void initialiser(liste* l , int entier);
+
 void afficher(liste *l);
 
 liste* ajoute_fin(liste *l, int entier);
@@ -26,8 +28,6 @@ liste* remplir(liste *l, int tab[], unsigned int nb);
 int rechercher(liste* l , int entier);
 
 void vider(liste* l);
-
-void initialiser(liste* l , int entier);
 
 
 #endif //TP_LISTE1_LISTE_H
