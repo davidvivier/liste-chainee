@@ -13,7 +13,7 @@ struct _liste {
 	liste *suivant;
 };
 
-void initialiser(liste* l , int entier);
+liste* nouvelleListe(int entier);
 
 void afficher(liste *l);
 

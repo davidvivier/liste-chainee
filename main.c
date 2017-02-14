@@ -15,10 +15,16 @@
 int main(void)
 {
 
-    liste *maListe;
-    int valeur = 5;
+    liste *maListe = nouvelleListe(5);
+    //int valeur = 5;
 
-    initialiser(maListe , valeur);
+    afficher(maListe);
+
+    ajoute_fin(maListe, 6);
+
+    afficher(maListe);
+
+    ajoute_debut(maListe, 4);
 
     return  0;
 }

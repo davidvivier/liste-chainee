@@ -3,10 +3,22 @@
 #include "liste.h"
 #include <stdlib.h>
 
+
+liste* nouvelleListe(int entier){
+	liste* l = malloc(sizeof(liste));
+    l->valeur = entier; //remplir le premier élément de la liste
+    l->suivant = NULL ; // le premier élément à pour suivant NULL
+    return l;
+}
+
 void afficher(liste *l) {
-	do {
-		printf("%d\n", l->valeur);
-	} while (l->suivant != NULL);
+	//printf("in afficher()\n");
+	liste* courant = l;
+	while (courant != NULL) {
+		printf("%d ", courant->valeur);
+		courant = courant->suivant;
+	}
+	printf("\n");
 }
 
 liste* ajoute_fin(liste *l, int entier) {
@@ -53,7 +65,7 @@ liste* ajoute_position(liste *l, int entier, unsigned int position) {
 
 	if (i < position) {
 		// on est arrivé à la fin de la liste avant la position voulue
-		printf("MOTHERFUCKER you tried to put it at the %d position but this fucking list only has %d elements. But even so, i have put it at the end of the list. But please be careful the next time.\n" ,position );
+		printf("MOTHERFUCKER you tried to put it at the %d position but this fucking list only has %d elements. But even so, i have put it at the end of the list. But please be careful the next time.\n" ,position, i);
 	}
 
 	// on crée le nouveau maillon
@@ -76,7 +88,7 @@ liste* remplir(liste *l, int tab[], unsigned int nb) {
 		courant = courant->suivant;
 	}
 
-	int i = 0;
+	unsigned int i = 0;
 	// pour chaque élément du tableau
 	while (i < nb) {
 
@@ -123,9 +135,4 @@ void vider(liste* l){
         free(tmpSuppr); // on libère la mémoire de l'élément à supprimer
     }
 
-}
-
-void initialiser(liste* l , int entier){
-    l->valeur = entier; //remplir le premier élément de la liste
-    l->suivant = NULL ; // le premier élément à pour suivant NULL
 }
