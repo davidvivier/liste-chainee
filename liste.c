@@ -72,7 +72,7 @@ liste* ajoute_position(liste *l, int entier, unsigned int position) {
 
 	if (i < position-1) {
 		// on est arrivé à la fin de la liste avant la position voulue
-		printf("MOTHERFUCKER you tried to put it at the %d position but this fucking list only has %d elements. But even so, i have put it at the end of the list. But please be careful the next time.\n" ,position, i);
+		printf("La liste a moins d'éléments que la position demandée. L'élément sera ajouté en fin de liste.\n");
 	}
 
 	// on crée le nouveau maillon
